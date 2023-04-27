@@ -1,0 +1,9 @@
+# Block all crawlers for /admin
+User-agent: *
+Disallow: /admin
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+Sitemap: http://www.bazzarrafal.com/sitemap.xml

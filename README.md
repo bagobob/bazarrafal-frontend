@@ -1,38 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Ecommerce  website of bazarrafal society with Next.js ,Tailwindcss and SendGrid
 
-## Getting Started
+Frontend part of the ecommerce app for bazarrafal write in Next.js - Integrated with SendGrid's API for sending emails.
 
-First, run the development server:
+![Homepage](./screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![ContactPage](./contact-screen.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- [Next.js](https://nextjs.org) for creating the pages and components
+- [Tailwindcss](https://tailwindcss.com) for styling the components
+- [SendGrid](https://sendgrid.com) for sending emails using their APIs
+- [Redux](https://redux-toolkit.js.org/) to persist items in my cart
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Please not that we are using the API keys and the keys are sensitive. Which means that we should always store secret or API keys in environment variables. As we already have .env.local for our local environment, The hosting provider needs to know about the API keys too.
 
-## Learn More
+We have in this project three environment variables:
+- NEXT_PUBLIC_STRAPI_API_TOKEN
+- NEXT_PUBLIC_UPLOAD_URL
+- SENDGRID_API_KEY
 
-To learn more about Next.js, take a look at the following resources:
+# License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This code source is not free of use. It is the under the right of Darecorp Inc.
