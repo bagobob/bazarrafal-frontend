@@ -13,7 +13,7 @@ const Shop = ({ products }) => {
   const [pageIndex, setPageIndex] = useState(1);
 
   const { data, error, isLoading } = useSWR(
-    `/api/products?populate=*&pagination[page]=${pageIndex}&pagination[pageSize]=${maxResult}`,
+    `api/products?populate=*&pagination[page]=${pageIndex}&pagination[pageSize]=${maxResult}`,
     fetchDataFromApi,
     {
       fallbackData: products,
@@ -83,7 +83,7 @@ const Shop = ({ products }) => {
 }
 
 export async function getStaticProps() {
-  const products = await fetchDataFromApi(`/api/products?populate=*&pagination[page]=1&pagination[pageSize]=${maxResult}`);
+  const products = await fetchDataFromApi(`api/products?populate=*&pagination[page]=1&pagination[pageSize]=${maxResult}`);
 
   return {
     props: { products },

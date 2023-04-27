@@ -9,7 +9,7 @@ import Head from "next/head";
 
 
 export async function getStaticProps() {
-  const products = await fetchDataFromApi("/api/products?populate=*");
+  const products = await fetchDataFromApi("api/products?populate=*");
 
   return {
     props: { products },
@@ -17,7 +17,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ products }) {
-
   return (
     <>
       <Head>
@@ -31,9 +30,9 @@ export default function Home({ products }) {
         <Hero />
         <Wrapper>
           <div className="text-center max-w-[800px] mx-auto my-[50px] md:my-[80px]">
-            <h className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
+            <h1 className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
               Catalogue produit
-            </h>
+            </h1>
             <div className="text-md md:text-xl">
               Une selection de produits de notre catalogue.
               Vous trouverez chez nous une large gamme de produits locaux
@@ -49,10 +48,10 @@ export default function Home({ products }) {
               ))
             }
           </div>
-          {/* <div className="text-center text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
+          <div className="text-center text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
             Nos Catégories
           </div>
-          <CategoryCard /> */}
+          <CategoryCard />
         </Wrapper>
         <GetInTouch />
       </main>
