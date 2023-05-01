@@ -12,7 +12,6 @@ const maxResult = 6;
 const Category = ({ category, products, slug }) => {
   const [pageIndex, setPageIndex] = useState(1);
   const { query } = useRouter();
-  console.log(query)
 
   useEffect(() => {
     setPageIndex(1);

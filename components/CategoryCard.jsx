@@ -1,58 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import teaImg from "../public/tea-category.jpg";
-import tisaneImg from "../public/tisane-category.jpg";
-import soapImg from "../public/soap-category.jpg";
-import detergentImg from "../public/detergent-category.avif";
+import { fetchDataFromApi } from "@/utils/api";
+import { useEffect } from 'react';
 
 
-export const CATEGORIES = [
-    {
-        name: 'THE',
-        url: 'the',
-        imgSrc:teaImg,
-        subCategories: ['Thé Vert', 'Thé noir', 'Thé jaune']
-
-    },
-    {
-        name: ' SAVON',
-        url: 'savon',
-        imgSrc: soapImg,
-        subCategories: ['Savon liquide', 'Savon solide']
-    },
-    {
-        name: 'DETERGENT',
-        url: 'detergent',
-        imgSrc: detergentImg,
-        subCategories: ['Détergent mauve', 'Détergent noire']
-    },
-    {
-        name: 'TISANE',
-        url: 'tisane',
-        imgSrc: tisaneImg,
-        subCategories: ['Tisane africaine', 'Tisane chinoise']
-    },
-];
 
 const CategoryCard = () => {
+    const [categories, setCategories] = useState(null);
+    const fetchCategories = async () => {
+        const { data } = await fetchDataFromApi("api/categories?populate=*");
+        setCategories(data);
+    };
+    useEffect(() => {
+        fetchCategories();
+    }, []);
     return (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 m-3">
-            {CATEGORIES.map((item, index) => (
+            {categories?.map(({ attributes: c, id }) => (
                 <div
-                    key={index}
+                    key={id}
                     className="flex flex-col gap-3 relative overflow-hidden"
                 >
                     <Image
-                        src={item.imgSrc}
-                        alt=""
+                        src={c.imgsrc?.data?.attributes?.url}
+                        alt={`${c.name}-category-img`}
                         width={800}
                         height={800}
                         className='w-[100%] h-[100%] object-cover'
                     />
                     <button className='absolute min-w-[100px] w-[fit-content] h-12 p-2 top-0 bottom-0 left-0 right-0 m-auto cursor-pointer border-none bg-[#f8efee] hover:opacity-90 uppercase font-medium'>
-                        <Link href={`/category/${item.url}`}>
-                            {item.name}
+                        <Link href={`/category/${c.slug}`}>
+                            {c.name}
                         </Link>
                     </button>
                 </div>
